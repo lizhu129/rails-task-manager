@@ -1,14 +1,13 @@
 <h1>My Tasks</h1>
 
-<ul>
   <% @tasks.each do |task| %>
-    <li><%= link_to task.title, task_path(task) %>
-      <i class="fa-solid fa-trash"><%= link_to "delete",
-        task_path(task),
-        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-        %></i>
-    </li>
+    <div>
+      <%= check_box_tag task.title, task.completed, task.completed -%>
+        <%= link_to task.title, task_path(task) %>
+          <i class="fa-solid fa-trash"><%= link_to "delete",
+            task_path(task),
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></i>
+    </div>
   <% end %>
-</ul>
 
 <p><%= link_to "📝 Add a new Task", new_task_path %></p>
